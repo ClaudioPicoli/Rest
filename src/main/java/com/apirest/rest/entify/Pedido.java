@@ -36,7 +36,7 @@ public class Pedido implements Serializable {
     
     @NotNull(message="Preço sugerido é obrigatorio")
     @Column(name = "PRECO_SUGERIDO", precision = 10, scale = 2)
-    private float precoSugerido;
+    private float valor;
     
     @NotNull(message="O pedido deve conter Itens")
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -72,17 +72,17 @@ public class Pedido implements Serializable {
 	}
 
 	/**
-	 * @return retorna precoSugerido
+	 * @return retorna valor
 	 */
-	public float getPrecoSugerido() {
-		return precoSugerido;
+	public float getValor() {
+		return valor;
 	}
 
 	/**
-	 * @param seta precoSugerido
+	 * @param seta valor
 	 */
-	public void setPrecoSugerido(float precoSugerido) {
-		this.precoSugerido = precoSugerido;
+	public void setValor(float valor) {
+		this.valor = valor;
 	}
 
 	/**

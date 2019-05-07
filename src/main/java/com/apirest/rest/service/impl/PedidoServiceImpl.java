@@ -42,7 +42,7 @@ public class PedidoServiceImpl implements PedidoService {
 	
 	private Pedido normalizaMoedas(Pedido pedido) {
 		if (pedido != null)
-			pedido.setPrecoSugerido(MoedaUtil.normalizaValor(pedido.getPrecoSugerido()));
+			pedido.setValor(MoedaUtil.normalizaValor(pedido.getValor()));
 		return pedido;
 	}
 }
