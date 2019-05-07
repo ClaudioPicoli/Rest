@@ -50,7 +50,12 @@ public class ProdutoController {
 	}
 	
 	@PutMapping("/update")
-	public Produto update(@RequestBody Produto produto) {
-		return produtoService.update(produto);
+	public ResponseEntity<?> update(@RequestBody Produto produto) {
+		try {
+			Produto p = produtoService.update(produto);
+			return new ResponseEntity<>(p,HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 }

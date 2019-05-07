@@ -3,6 +3,8 @@ package com.apirest.rest.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,8 +35,13 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/save")
-	public Cliente save(@RequestBody Cliente cliente) {
-		return clienteService.save(cliente);
+	public ResponseEntity<?> save(@RequestBody Cliente cliente) {
+		try {
+			Cliente c = clienteService.save(cliente);
+			return new ResponseEntity<>(c,HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 	@DeleteMapping("delete")
@@ -43,7 +50,12 @@ public class ClienteController {
 	}
 	
 	@PutMapping("/update")
-	public Cliente update(@RequestBody Cliente cliente) {
-		return clienteService.update(cliente);
+	public ResponseEntity<?> update(@RequestBody Cliente cliente) {
+		try {
+			Cliente c = clienteService.save(cliente);
+			return new ResponseEntity<>(c,HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 }

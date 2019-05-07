@@ -37,7 +37,7 @@ public class Pedido implements Serializable {
     @NotNull(message="Preço sugerido é obrigatorio")
     @Column(name = "PRECO_SUGERIDO", precision = 10, scale = 2)
     private float valor;
-    
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ID_PEDIDO", referencedColumnName = "ID")
 	private List<ItemPedido> itensPedidos;

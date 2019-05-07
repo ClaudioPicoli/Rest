@@ -24,7 +24,6 @@ public class PedidoServiceImpl implements PedidoService {
 		return pedidoRepository.findById(id).orElse(null);
 	}
 	
-	@Override
 	public Pedido save(Pedido pedido) {
 		pedido = normalizaMoedas(pedido);
 		return pedidoRepository.save(pedido);
@@ -34,7 +33,6 @@ public class PedidoServiceImpl implements PedidoService {
 		pedidoRepository.delete(pedido);
 	}
 	
-	@Override
 	public Pedido update(Pedido pedido) {
 		pedido = normalizaMoedas(pedido);
 		return pedidoRepository.save(pedido);

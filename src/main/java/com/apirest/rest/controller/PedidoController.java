@@ -3,6 +3,8 @@ package com.apirest.rest.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,8 +35,13 @@ public class PedidoController {
 	}
 	
 	@PostMapping("/save")
-	public Pedido save(@RequestBody Pedido pedido) {
-		return pedidoService.save(pedido);
+	public ResponseEntity<?> save(@RequestBody Pedido pedido) {
+		try {
+			Pedido p = pedidoService.save(pedido);
+			return new ResponseEntity<>(p,HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 	@DeleteMapping("delete")
@@ -43,7 +50,12 @@ public class PedidoController {
 	}
 	
 	@PutMapping("/update")
-	public Pedido update(@RequestBody Pedido pedido) {
-		return pedidoService.update(pedido);
+	public ResponseEntity<?> update(@RequestBody Pedido pedido) {
+		try {
+			Pedido p = pedidoService.update(pedido);
+			return new ResponseEntity<>(p,HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 }
