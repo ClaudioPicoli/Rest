@@ -8,6 +8,6 @@ public class CpfUtils {
         }
         
         public static String retiraMascara(String CPF) {
-            return CPF.replaceAll(".", "").replaceAll(",", "");
+            return CPF.replaceAll("[.-]", "");
         }
     }
