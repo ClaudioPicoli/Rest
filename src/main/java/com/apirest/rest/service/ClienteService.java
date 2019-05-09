@@ -30,7 +30,7 @@ public interface ClienteService {
      * delete deleta um Cliente
      * @param Cliente cliente que será deletado
      */
-    void delete(Cliente entity);
+    void delete(Cliente cliente);
 	
     /**
      * update atualiza um cliente
